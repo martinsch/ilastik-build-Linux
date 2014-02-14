@@ -17,11 +17,11 @@ endif ()
 get_filename_component(BUILDEM_REPO_DIR ../buildem ABSOLUTE)
 if (NOT EXISTS ${BUILDEM_REPO_DIR}/python.cmake)
     message ("Downloading buildem repository ...")
-    execute_process(COMMAND git clone https://github.com/janelia-flyem/buildem.git ${BUILDEM_REPO_DIR}
+    execute_process(COMMAND git clone https://github.com/martinsch/buildem.git ${BUILDEM_REPO_DIR}
                     WORKING_DIRECTORY ${BUILDEM_DIR}
                     RESULT_VARIABLE BUILDEM_INSTALL_FAILED)
     if(BUILDEM_INSTALL_FAILED)
-        MESSAGE(FATAL_ERROR "Unable to clone buildem scripts from\n     'https://github.com/janelia-flyem/buildem.git'\n(either git is not installed properly on your system, or the repository is not accessible). Please place buildem at\n    '${BUILDEM_REPO_DIR}'.")
+        MESSAGE(FATAL_ERROR "Unable to clone buildem scripts from\n     'https://github.com/martinsch/buildem.git'\n(either git is not installed properly on your system, or the repository is not accessible). Please place buildem at\n    '${BUILDEM_REPO_DIR}'.")
     endif()
 else()
     message ("Updating buildem repoository in ${BUILDEM_REPO_DIR}")
