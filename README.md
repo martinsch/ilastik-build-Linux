@@ -17,7 +17,7 @@ Usage:
 > git clone https://github.com/ilastik/ilastik-build-Linux.git
 > mkdir build
 > cd build
-> cmake ../ilastik-build-Linux -DBUILDEM_DIR=<ilastik_build_dir> -DCMAKE_CPLEX_ROOT_DIR=<cplex_dir>
+> cmake ../ilastik-build-Linux -DBUILDEM_DIR=<ilastik_build_dir> -DCPLEX_ROOT_DIR=<cplex_dir>
 > make help      # (Optional: View the list of targets)
 > make           # or 'make -j8' for parallel builds
 > make package   # to create a 'ilastik-0.6.a-Linux.tar.gz' binary installer
