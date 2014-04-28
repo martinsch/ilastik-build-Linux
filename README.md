@@ -1,7 +1,15 @@
 ilastik-build-Linux
 ===================
 
-Use buildem to compile ilastik and all its dependencies on Linux. Usage:
+Use buildem to compile ilastik and all its dependencies on Linux. 
+
+As a prerequisite, the following command must be executed to install the packages needed for compilation on a Debian system like Ubuntu:
+```
+sudo apt-get install build-essential g++ gcc git cmake cmake-curses-gui gfortran libxext-dev libfontconfig1-dev
+```
+
+
+Usage:
 
 ```
 > mkdir <ilastik_build_dir>
