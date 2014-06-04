@@ -43,7 +43,12 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${BUILDEM_REPO_DIR})
 
 set(CPLEX_ROOT_DIR "" CACHE PATH "CPLEX root directory")
 
-include(ilastik-gui)
+set(ILASTIK_HEADLESS_ONLY FALSE CACHE BOOL "Build only headless support for ilastik")
+if (ILASTIK_HEADLESS_ONLY)
+    include (ilastik)
+else()
+    include (ilastik-gui)
+endif()
 
 set (PACKAGE_WITH_CPLEX OFF CACHE BOOL "Include CPLEX shared libraries in the final binary pacakge." FORCE)
 if (PACKAGE_WITH_CPLEX)
@@ -109,11 +114,11 @@ SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY
 )
 
 # package version setup
-SET(CPACK_PACKAGE_VERSION_MAJOR "1")
-SET(CPACK_PACKAGE_VERSION_MINOR "0")
-SET(CPACK_PACKAGE_VERSION_PATCH "beta")
+set(ILASTIK_VERSION_FILE "${BUILDEM_SRC_DIR}/ilastik/ilastik/ilastik/__init__.py")
+CONFIGURE_FILE( ${PROJECT_SOURCE_DIR}/CPackUpdateVersion.cmake.in
+				${PROJECT_BINARY_DIR}/CPackUpdateVersion.cmake @ONLY)
+set(CPACK_PROJECT_CONFIG_FILE ${PROJECT_BINARY_DIR}/CPackUpdateVersion.cmake)
 
-SET(CPACK_PACKAGE_INSTALL_DIRECTORY     "${PROJECT_NAME}-1.0.beta")
 SET(CPACK_STRIP_FILES TRUE)
 SET(CPACK_PACKAGE_CONTACT "ilastik Team <team@ilastik.org>")
 SET(CPACK_GENERATOR TGZ)
